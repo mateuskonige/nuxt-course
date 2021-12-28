@@ -11,6 +11,7 @@
 <script>
   import axios from 'axios'
   import CardComponent from '../../components/CardComponent.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
@@ -19,17 +20,19 @@
 
     data() {
       return {
-        posts: '',
+        allPosts: '',
       }
     },
+    computed: {
+      ...mapGetters(['posts'])
+      // allPosts() {
+      //   return this.$store.getters.posts
+      // }
+    },
 
-    async asyncData() {
-      let {
-        data
-      } = await axios.get('https://jsonplaceholder.typicode.com/posts/')
-      return {
-        posts: data
-      }
+    async asyncData({ store }) {
+      let { data } = await axios.get('https://jsonplaceholder.typicode.com/posts/')
+      store.dispatch('setPosts', data)
     },
 
     head: {
