@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  // import axios from 'axios'
   import CardComponent from '../../components/CardComponent.vue'
   import { mapGetters } from 'vuex'
 
@@ -30,10 +30,10 @@
       // }
     },
 
-    async fetch({ store }) {
-      let { data } = await axios.get('https://jsonplaceholder.typicode.com/posts/')
-      store.dispatch('setPosts', data)
-    },
+    // async fetch({ store }) {
+    //   let { data } = await axios.get('https://jsonplaceholder.typicode.com/posts/')
+    //   store.dispatch('setPosts', data)
+    // },
 
     head: {
       title: 'NuxtApp | Lista de posts'
