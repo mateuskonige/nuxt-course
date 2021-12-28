@@ -30,7 +30,7 @@
       // }
     },
 
-    async asyncData({ store }) {
+    async fetch({ store }) {
       let { data } = await axios.get('https://jsonplaceholder.typicode.com/posts/')
       store.dispatch('setPosts', data)
     },
